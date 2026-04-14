@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/buttonProducts"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Products"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/buttonCart"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Cart"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/buttonReports"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Reports"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/buttonPrinter"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Printer"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="POS Mobile"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:id="@+id/sectionProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Product catalogue"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <ListView
+                android:id="@+id/productListView"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:dividerHeight="1dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tap product to add quantity to cart." 
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sectionCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cart"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <ListView
+                android:id="@+id/cartListView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:dividerHeight="1dp" />
+
+            <TextView
+                android:id="@+id/textCartTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total: $0.00"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp" />
+
+            <Button
+                android:id="@+id/buttonCheckout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Checkout" />
+
+            <TextView
+                android:id="@+id/textCartHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Long press an item to remove it from cart."
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sectionReports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daily reports"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/textReportSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No sales yet."
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/buttonPrintReport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Print Daily Sales Report" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sectionPrinter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Printer"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/buttonRefreshPrinters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Refresh Paired Printers" />
+
+            <Spinner
+                android:id="@+id/printerSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
+            <Button
+                android:id="@+id/buttonConnectPrinter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Connect to Selected Printer"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/textPrinterStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Printer not connected"
+                android:layout_marginTop="8dp" />
+
+            <Button
+                android:id="@+id/buttonPrintLastReceipt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Print Last Receipt"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
