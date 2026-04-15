@@ -8,6 +8,8 @@ import java.util.*
 
 data class Product(val name: String, val price: Double)
 
+data class Promotion(val name: String, val discountPercent: Double)
+
 data class CartItem(val product: Product, var quantity: Int) {
     fun totalPrice(): Double = product.price * quantity
 }
@@ -28,6 +30,15 @@ class DataStore(private val preferences: SharedPreferences) {
         val today = formatter.format(Date())
         return loadSales().filter { it.time.startsWith(today) }
     }
+
+    fun getWeeklySales(): List<SaleRecord> {
+        val endDate = Date()
+        val calendar = Calendar.getInstance().apply { time = endDate; add(Calendar.DAY_OF_YEAR, -7) }
+        val cutoff = calendar.time
+        return loadSales().filter { parseTime(it.time)?.after(cutoff) == true }
+    }
+
+    fun getAllSales(): List<SaleRecord> = loadSales()
 
     private fun loadSales(): List<SaleRecord> {
         val raw = preferences.getString(keySales, "[]") ?: "[]"
@@ -50,5 +61,13 @@ class DataStore(private val preferences: SharedPreferences) {
             array.put(obj)
         }
         return array.toString()
+    }
+
+    private fun parseTime(value: String): Date? {
+        return try {
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(value)
+        } catch (e: Exception) {
+            null
+        }
     }
 }
